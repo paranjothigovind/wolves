@@ -19,7 +19,7 @@ module.exports = mongoose => {
         city:{
           type:String
         },
-        gender:{
+        c:{
           type:String
         },
         country:{

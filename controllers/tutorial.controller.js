@@ -13,7 +13,7 @@ exports.create = (req, res) => {
 
   // Create a Tutorial
   const tutorial = new Tutorial({
-    
+
         name:req.body.name,
         email:req.body.email,
         gender:req.body.gender,
@@ -27,11 +27,11 @@ exports.create = (req, res) => {
         school:req.body.school,
         homeTown:req.body.homeTown,
         languages:req.body.languages,
-        courseId:rereq.body.courseId,
+        courseId:req.body.courseId,
         courseDept:req.body.courseDept,
         description:req.body.description,
         courseRoom:req.body.courseRoom,
-        waitListCapacity:req.body.courseDept,
+        waitListCapacity:req.body.waitListCapacity,
         courseTeam:req.body.courseTeam
 
   
