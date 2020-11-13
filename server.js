@@ -35,6 +35,8 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
+require("./routes/tutor")(app);
+require("./routes/student")(app);
 
 const port = process.env.PORT || 5000;
 
