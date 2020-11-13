@@ -6,6 +6,8 @@ import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
 import { Card } from 'react-bootstrap'
 import { Tab, Row, Col, Nav,   } from 'react-bootstrap'
+import Faculty from "../../pages/Faculty";
+import Axios from "axios";
 class Register extends Component {
   constructor() {
     super();
@@ -49,6 +51,14 @@ class Register extends Component {
       userType: "STUDENT"
     };
 
+    const studentData = {
+      name: this.state.name,
+      email: this.state.email
+    }
+
+    Axios.post('http://localhost:5000/student', studentData)
+      .then( res => console.log(res.data) )
+
     this.props.registerUser(newUser, this.props.history);
   };
 
@@ -62,6 +72,14 @@ class Register extends Component {
       password2: this.state.password2,
       userType: "FACULTY"
     };
+
+    const faculty = {
+      name: this.state.name,
+      email: this.state.email
+    }
+
+    Axios.post('http://localhost:5000/tutor', faculty)
+      .then( res => console.log(res.data) )
 
     this.props.registerUser(newUser, this.props.history);
   };

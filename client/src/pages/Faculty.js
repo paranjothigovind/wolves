@@ -1,21 +1,12 @@
 import React, { Component } from 'react'
+import AddCourse from './AddCourse'
 
 class Faculty extends Component {
     render(){
         return(
             <div>
-                <div className="container" style={{ marginTop: '50px' }}>
-                    <button
-                        style={{
-                            width: "200px",
-                            borderRadius: "3px",
-                            letterSpacing: "1.5px",
-                            marginTop: "1rem"
-                        }}
-                        className="btn btn-large  waves-light  blue "
-                    >
-                        Add Course
-                    </button>
+                <div className="container" style={{ marginTop: '50px', width: '600px' }}>
+                    <AddCourse />
                 </div>
             </div>
         )
