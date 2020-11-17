@@ -1,0 +1,56 @@
+.navLabel{
+    font-size: 20px;
+    margin-right: 70px;
+    color: black;
+}
+
+.arrow{
+    position: absolute;
+    right: 10%;
+}
+
+.join:focus{
+    background-color: cornsilk;
+}
+
+.buttonAppBar{
+    background-color: #226cd5;
+    color: white;
+    height: 40px;
+    padding: 0px 20px 0px 20px;
+    border-radius: 5px;
+    border-color: transparent;
+    left: 0;
+    font-weight: 500;
+    margin-top: 30px;
+    width: 90%;
+}
+.buttonSmall{
+    background-color: #226cd5;
+    color: white;
+    height: 40px;
+    padding: 0px 20px 0px 20px;
+    border-radius: 5px;
+    border-color: transparent;
+    left: 0;
+    font-weight: 500;
+    margin-top: 30px;
+    width: 116px;
+}
+.buttonAppBar:hover{
+    background-color: #ffffff;
+    border-color: #226cd5;
+    color: #226cd5;
+}
+
+.linkActive:active{
+    font-weight: 900;
+}
+
+
+@media screen and (max-width: 1366px){
+    .navLabel{
+        font-size: 16px;
+        margin-right: 40px;
+    }
+}

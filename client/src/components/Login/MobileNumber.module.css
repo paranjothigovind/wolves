@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+.pageContainer{
+    font-family: 'Poppins', sans-serif;
+    line-height: 27px;
+}
+
+.header{
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.subHeader{
+    font-size: 18px;
+    font-weight: 900;
+    color: #226CD5;
+}
