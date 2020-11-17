@@ -37,27 +37,50 @@ module.exports = mongoose => {
         languages:{
           type:String
         },
-        courseId:{
-          type:String
-        },
-        courseName:{
-          type:String
-        },
-        courseDept:{
-          type:String
-        },
-        description:{
-          type:String
-        },
-        courseRoom:{
-          type:String
-        },
-        waitListCapacity:{
-          type:Number
-        },
-        courseTeam:{
-          type:String
-        },
+        // courseId:{
+        //   type:String
+        // },
+        // courseName:{
+        //   type:String
+        // },
+        // courseDept:{
+        //   type:String
+        // },
+        // description:{
+        //   type:String
+        // },
+        // courseRoom:{
+        //   type:String
+        // },
+        // waitListCapacity:{
+        //   type:Number
+        // },
+        // courseTeam:{
+        //   type:String
+        // },
+        course: [{
+          courseId:{
+            type:String
+          },
+          courseName:{
+            type:String
+          },
+          courseDept:{
+            type:String
+          },
+          description:{
+            type:String
+          },
+          courseRoom:{
+            type:String
+          },
+          waitListCapacity:{
+            type:String
+          },
+          courseTeam:{
+            type:String
+          },
+        }]
 
 
     },

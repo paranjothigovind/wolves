@@ -21,6 +21,8 @@ module.exports = app => {
   // Retrieve a single Tutorial with id
   router.get("/:id", student.findOne);
 
+  router.get("/email/:email", student.getByEmail)
+
   // Update a Tutorial with id
   router.put("/:id", student.update);
 

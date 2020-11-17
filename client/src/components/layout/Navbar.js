@@ -5,6 +5,11 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
 class Navbar extends Component {
+  onLogoutClick = e => {
+    e.preventDefault();
+    this.props.logoutUser();
+  };
+
   render() {
     return (
       <div className="navbar-fixed">
@@ -43,9 +48,10 @@ class Navbar extends Component {
                 width: "150px",
                 borderRadius: "3px",
                 letterSpacing: "1.5px",
-                marginTop: "1rem"
+                marginTop: "1rem",
+                float:'right',
+                marginRight: '15px'
               }}
-              onClick={this.onLogoutClick}
               className="btn btn-large waves-effect waves-light hoverable blue accent-3"
           >
               Login

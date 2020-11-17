@@ -95,6 +95,24 @@ exports.findOne = (req, res) => {
     });
 };
 
+exports.getByEmail = (req, res) => {
+  const email = req.params.email;
+  var condition = email;
+  // res.json("Current USer"+email);
+  studentSchema.find({"email":email})
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "TUTOR_NOT_FOUND_ID" + email });
+      else res.send(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "ERROR_RETRIEVING_TUTOR_ID" + email });
+    });
+};
+
+
 
 // Update a Tutor by the id in the request
 exports.update = (req, res) => {

@@ -27,12 +27,12 @@ exports.create = (req, res) => {
         school:req.body.school,
         homeTown:req.body.homeTown,
         languages:req.body.languages,
-        courseId:req.body.courseId,
-        courseDept:req.body.courseDept,
-        description:req.body.description,
-        courseRoom:req.body.courseRoom,
-        waitListCapacity:req.body.waitListCapacity,
-        courseTeam:req.body.courseTeam
+        // courseId:req.body.courseId,
+        // courseDept:req.body.courseDept,
+        // description:req.body.description,
+        // courseRoom:req.body.courseRoom,
+        // waitListCapacity:req.body.waitListCapacity,
+        // courseTeam:req.body.courseTeam
 
   
   });
@@ -89,6 +89,59 @@ exports.findCurrentUser=(req,res)=>{
     });
 };
 
+exports.findCurrentUserByEmail=(req,res)=>{
+  const email = req.params.email;
+  var condition = email;
+  // res.json("Current USer"+email);
+  Tutorial.find({"email":email})
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "TUTOR_NOT_FOUND_EMAIL " + email });
+      else res.send(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "ERROR_RETRIEVING_TUTOR_PHONE" + phone });
+    });
+};
+
+exports.pushCourse = (req, res) => {
+  if (!req.body) {
+    return res.status(400).send({
+      message: "Data to update can not be empty!"
+    });
+  }
+
+  const id = req.params.id;
+  const data = {
+    courseId:req.body.courseId,
+    courseDept:req.body.courseDept,
+    description:req.body.description,
+    courseRoom:req.body.courseRoom,
+    waitListCapacity:req.body.waitListCapacity,
+    courseTeam:req.body.courseTeam
+  }
+
+  Tutorial.findByIdAndUpdate(id, {
+    $push: {
+      course: data
+    }
+  }, { useFindAndModify: false })
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot update booked student array with id=${id}. Maybe details was not found!`
+        });
+      } else res.send({ message: "Details was updated successfully." });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating Details with id=" + id
+      });
+    });
+};
+
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
@@ -99,6 +152,48 @@ exports.findOne = (req, res) => {
       if (!data)
         res.status(404).send({ message: "TUTOR_NOT_FOUND_ID" + id });
       else res.send(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "ERROR_RETRIEVING_TUTOR_ID" + id });
+    });
+};
+
+exports.getCourse = (req, res) => {
+  const email = req.params.email;
+  var condition = email;
+  // res.json("Current USer"+email);
+  Tutorial.find({"email":email})
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "TUTOR_NOT_FOUND_ID" + email });
+      else res.send(data.course);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "ERROR_RETRIEVING_TUTOR_ID" + email });
+    });
+};
+
+exports.getParticularCourse = (req, res) => {
+  const id = req.params.id;
+  const id1 = req.params.id1;
+  //console.log(id);
+  Tutorial.findById(id)
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "TUTOR_NOT_FOUND_ID" + id });
+      else {
+        course.findById(id1)
+          .then(data1 => {
+            if(!data1)
+              res.status(404).send({ message: "course not found" + id });
+            else
+              res.send(data1)
+          })
+      }
     })
     .catch(err => {
       res

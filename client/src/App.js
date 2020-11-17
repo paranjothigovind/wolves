@@ -16,8 +16,10 @@ import FacultyRoute from "./components/private-route/FacultyRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import Faculty from './pages/Faculty'
 import Student from './pages/Student'
+import StudentProfile from './pages/StudentProfile'
 
 import "./App.css";
+import AddCourse from "./pages/AddCourse";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -51,10 +53,11 @@ class App extends Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Switch>
               <PrivateRoute exact path="/student" component={Student} />
-              {/* <PrivateRoute exact path="/dashboard" component={Dashboard} /> */}
+              <PrivateRoute exact path="/studentprofile" component={StudentProfile} />
             </Switch>
             <Switch>
               <FacultyRoute exact path="/faculty" component={Faculty} />
+              <FacultyRoute exact path="/faculty/addcourse" component={AddCourse} />
             </Switch>
           </div>
         </Router>
